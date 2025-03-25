@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MobDev" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/cit_yellow</item>
+        <item name="colorPrimaryVariant">@color/cit_yellow</item>
+        <item name="colorOnPrimary">@color/cit_red</item>
+        <item name="colorControlHighlight">@null</item>
+    </style>
+
+    <style name="Theme.MobDev" parent="Base.Theme.MobDev" />
+</resources>

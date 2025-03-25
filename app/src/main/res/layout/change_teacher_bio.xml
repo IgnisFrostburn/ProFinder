@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/bottom_background_vector"
+            android:scaleType="fitXY"
+            android:src="@drawable/vector_bottom"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/change_bio_lbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/change_bio"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/background_lbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/background_info"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/change_bio_lbl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/background_tf"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/rounded_border"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:textSize="20sp"
+            android:backgroundTint="@color/light_grey"
+            android:textColor="@color/black"
+            android:minLines="1"
+            android:maxLength="5"
+            android:scrollbars="vertical"
+            android:gravity="top|start"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            app:layout_constraintTop_toBottomOf="@id/background_lbl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textMultiLine"
+            android:importantForAutofill="no"
+            android:hint="@string/enter_text_hint"/>
+
+
+
+        <TextView
+            android:id="@+id/courses_lbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/courses_info"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/background_tf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/courses_tf"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="@color/light_grey"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:minLines="1"
+            android:maxLength="5"
+            android:scrollbars="vertical"
+            android:gravity="top|start"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            app:layout_constraintTop_toBottomOf="@id/courses_lbl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textMultiLine"
+            android:importantForAutofill="no"
+            android:hint="@string/enter_text_hint"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_corner_box"
+            android:fontFamily="@font/inter"
+            android:text="@string/confirm_changes"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/courses_tf" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:contentDescription="@string/bottom_background_vector"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/vector_bottom"-->
+<!--        app:layout_constrainedHeight="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/change_bio_lbl"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/change_bio"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/inter"-->
+<!--        app:layout_constraintWidth_min="300dp"-->
+<!--        app:layout_constraintWidth_max="500dp"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/background_lbl"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/background_info"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/inter"-->
+<!--        app:layout_constraintWidth_min="300dp"-->
+<!--        app:layout_constraintWidth_max="500dp"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/change_bio_lbl"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/background_tf"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:background="@drawable/rounded_border"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        android:paddingTop="5dp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:backgroundTint="@color/light_grey"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:minLines="1"-->
+<!--        android:maxLength="5"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:gravity="top|start"-->
+<!--        app:layout_constraintWidth_min="300dp"-->
+<!--        app:layout_constraintWidth_max="500dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/background_lbl"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:importantForAutofill="no"-->
+<!--        android:hint="@string/enter_text_hint"/>-->
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/courses_lbl"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/courses_info"-->
+<!--        android:textAlignment="textStart"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/inter"-->
+<!--        app:layout_constraintWidth_min="300dp"-->
+<!--        app:layout_constraintWidth_max="500dp"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/background_tf"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/courses_tf"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:layout_marginEnd="50dp"-->
+<!--        android:background="@drawable/rounded_border"-->
+<!--        android:backgroundTint="@color/light_grey"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        android:paddingTop="5dp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:minLines="1"-->
+<!--        android:maxLength="5"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:gravity="top|start"-->
+<!--        app:layout_constraintWidth_min="300dp"-->
+<!--        app:layout_constraintWidth_max="500dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/courses_lbl"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:importantForAutofill="no"-->
+<!--        android:hint="@string/enter_text_hint"/>-->
+
+<!--    <Button-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/rounded_corner_box"-->
+<!--        android:fontFamily="@font/inter"-->
+<!--        android:text="@string/confirm_changes"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/courses_tf" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "906974333178",
+    "project_id": "profinder-a83c4",
+    "storage_bucket": "profinder-a83c4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906974333178:android:de815ce5e8056d80ad6143",
+        "android_client_info": {
+          "package_name": "citu.profinderapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu4cJVPqGdwkYRsvWEE87oB4OiY5NKLwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

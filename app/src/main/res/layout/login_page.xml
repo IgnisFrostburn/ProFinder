@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/grid_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/bottom_background_vector"
+        android:scaleType="fitXY"
+        android:src="@drawable/grid_bg" />
+
+    <ImageView
+        android:id="@+id/background_vector"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/vector_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
+        tools:ignore="MissingConstraints"
+        android:contentDescription="@string/bottom_background_vector"/>
+
+    <ImageView
+        android:id="@+id/profinder_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_min="100dp"
+        app:layout_constraintWidth_max="300dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/profinder_logo"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/profinder_logo"/>
+
+    <TextView
+        android:id="@+id/username_lbl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        app:layout_constraintWidth_min="300dp"
+        app:layout_constraintWidth_max="500dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toBottomOf="@id/profinder_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/username_tf"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/rounded_corner_box"
+        android:backgroundTint="@color/light_grey"
+        android:hint="@string/username_hint"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintWidth_min="300dp"
+        app:layout_constraintWidth_max="500dp"
+        app:layout_constraintTop_toBottomOf="@id/username_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="text"
+        android:autofillHints="username" />
+
+    <TextView
+        android:id="@+id/password_lbl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        app:layout_constraintWidth_min="300dp"
+        app:layout_constraintWidth_max="500dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/username_tf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/password_tf"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/rounded_corner_box"
+        android:backgroundTint="@color/light_grey"
+        android:fontFamily="@font/inter"
+        android:hint="@string/password_hint"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintWidth_min="300dp"
+        app:layout_constraintWidth_max="500dp"
+        app:layout_constraintTop_toBottomOf="@id/password_lbl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textPassword"
+        android:autofillHints="password" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/black"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_corner_box"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toTopOf="@id/password_tf"/>
+
+    <TextView
+        android:id="@+id/no_acc_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_account"
+        android:textColor="@color/white"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="@font/inter"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/sign_up_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/background_vector"/>
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/no_acc_lbl"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

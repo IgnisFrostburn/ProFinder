@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/grid_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/bottom_background_vector"
+        android:scaleType="fitXY"
+        android:src="@drawable/grid_bg" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/bottom_background_vector"
+        android:scaleType="fitXY"
+        android:src="@drawable/vector_bottom"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teacher_acc_type_btn"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/profinder_logo"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:src="@drawable/profinder_logo"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/profinder_logo"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/profinder_logo"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintWidth_percent="0.4"-->
+<!--        app:layout_constraintDimensionRatio="1:1"-->
+<!--        app:layout_constraintWidth_min="100dp"-->
+<!--        app:layout_constraintWidth_max="300dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:src="@drawable/profinder_logo"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:contentDescription="@string/profinder_logo"/>-->
+
+    <TextView
+        android:id="@+id/create_acc_tv"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:text="@string/create_acc"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/profinder_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/part_one_tv"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:text="@string/part_one"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:fontFamily="@font/inter"
+        app:layout_constraintTop_toBottomOf="@id/create_acc_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/choose_acc_type_tv"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_acc_type"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:fontFamily="@font/inter"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/part_one_tv"
+        app:layout_constraintBottom_toTopOf="@id/student_acc_type_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/student_acc_type_btn"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:text="@string/student"
+        android:background="@drawable/rounded_corner_box"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/choose_acc_type_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/teacher_acc_type_btn"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:text="@string/teacher"
+        android:background="@drawable/rounded_corner_box"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:layout_marginTop="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/student_acc_type_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/back_to_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_login"
+        android:textColor="@color/white"
+        android:background="#00000000"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

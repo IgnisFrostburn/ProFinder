@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:ignore="ExtraText">
+
+        <ImageView
+            android:id="@+id/grid_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/bottom_background_vector"
+            android:scaleType="fitXY"
+            android:src="@drawable/grid_bg" />
+
+        <ImageView
+            android:id="@+id/red_rectangle_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/bottom_background_vector"
+            android:scaleType="fitXY"
+            android:src="@drawable/vector_bottom"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/courses_tf"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+        <ImageView
+            android:id="@+id/profinder_logo"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:src="@drawable/profinder_logo"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/profinder_logo"/>
+
+        <TextView
+            android:id="@+id/create_acc_tv"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="@string/create_acc"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:fontFamily="@font/inter"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/profinder_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/part_three_tv"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="@string/part_three"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/create_acc_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/background_lbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/background_info"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintTop_toBottomOf="@id/part_three_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/background_tf"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:minLines="1"
+            android:maxLength="150"
+            android:gravity="top|start"
+            android:background="@drawable/rounded_border"
+            android:hint="@string/enter_text_hint"
+            android:backgroundTint="@color/light_grey"
+            android:paddingStart="20dp"
+            android:paddingBottom="2dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            app:layout_constraintTop_toBottomOf="@id/background_lbl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textMultiLine"
+            android:autofillHints="username"/>
+
+        <TextView
+            android:id="@+id/courses_lbl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/courses_info"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/background_tf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/courses_tf"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:minLines="1"
+            android:maxLength="150"
+            android:backgroundTint="@color/light_grey"
+            android:gravity="top|start"
+            android:fontFamily="@font/inter"
+            android:background="@drawable/rounded_border"
+            android:hint="@string/enter_text_hint"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_min="300dp"
+            app:layout_constraintWidth_max="500dp"
+            app:layout_constraintTop_toBottomOf="@id/courses_lbl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textMultiLine"
+            android:autofillHints="password" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner_box"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sign_up_btn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/sign_up_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner_box"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
