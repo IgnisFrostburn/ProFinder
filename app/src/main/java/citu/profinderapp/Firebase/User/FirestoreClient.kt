@@ -7,7 +7,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirestoreClient {
-    private val tag = "FirestoreClient: "
     private val db = FirebaseFirestore.getInstance()
 
     fun saveTeacher(teacherUser: TeacherUser):Boolean {
@@ -62,21 +61,56 @@ class FirestoreClient {
         }
     }
 
-    fun fetchTeachers(teacherList : MutableList<TeacherUser>) : MutableList<TeacherUser> {
+//    fun fetchTeachers(callback: (List<TeacherUser>) -> Unit) {
+//        val teachersList = mutableListOf<TeacherUser>()
+//
+//        db.collection("teachers")
+//            .get()
+//            .addOnSuccessListener { documents ->
+//                for (document in documents) {
+//                    val teacher = document.toObject(TeacherUser::class.java)
+//                    teachersList.add(teacher)
+//                }
+//                callback(teachersList)
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.e("FirestoreClient", "Error getting documents: ", exception)
+//            }
+//    }
+
+    fun fetchTeachers(callback: (List<TeacherUser>) -> Unit) {
+        val teachersList = mutableListOf<TeacherUser>()
+
         db.collection("teachers")
             .get()
             .addOnSuccessListener { documents ->
-                teacherList.clear()
-                for(document in documents) {
-                    val teacherUser = document.toObject(TeacherUser::class.java)
-                    teacherList.add(teacherUser)
+                for (document in documents) {
+                    val teacher = document.toObject(TeacherUser::class.java)
+                    teachersList.add(teacher)
                 }
+                // Once data is fetched, call the callback
+                callback(teachersList)
             }
             .addOnFailureListener { exception ->
-                Log.e("Fetch Teachers", "Error getting documents: ", exception)
+                Log.e("FirestoreClient", "Error getting documents: ", exception)
             }
-        return teacherList
     }
+
+//    fun fetchTeachers(teacherList : MutableList<TeacherUser>) : MutableList<TeacherUser> {
+//        db.collection("teachers")
+//            .get()
+//            .addOnSuccessListener { documents ->
+//                teacherList.clear()
+//                for(document in documents) {
+//                    val teacherUser = document.toObject(TeacherUser::class.java)
+//                    teacherList.add(teacherUser)
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.e("Fetch Teachers", "Error getting documents: ", exception)
+//            }
+//        return teacherList
+//    }
 
 //    fun insertUser(
 //        user:User

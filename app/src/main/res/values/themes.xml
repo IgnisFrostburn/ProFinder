@@ -5,6 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/cit_yellow</item>
         <item name="colorPrimaryVariant">@color/cit_yellow</item>
+<!--        <item name="colorPrimary">#25f00e</item>-->
+<!--        <item name="colorPrimaryVariant">#25f00e</item>-->
         <item name="colorOnPrimary">@color/cit_red</item>
         <item name="colorControlHighlight">@null</item>
     </style>

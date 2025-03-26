@@ -48,23 +48,23 @@ class SignUpPage3StudentActivity : Activity() {
 
             val email = LoggedInAccount.email ?: ""
             val password = LoggedInAccount.password ?: ""
-            val student = StudentUser(
-                auth.currentUser?.uid?:"",
-                LoggedInAccount.username?:"",
-                password,
-                email,
-                "student",
-                courseAndYear,
-                phoneNumber,
-                customInfo
-            )
+
 
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.e("Sign Up Email and Password", "SUCCESS!")
                         val user = auth.currentUser
-
+                        val student = StudentUser(
+                            user?.uid?:"",
+                            LoggedInAccount.username?:"",
+                            password,
+                            email,
+                            "student",
+                            courseAndYear,
+                            phoneNumber,
+                            customInfo
+                        )
                         firestoreClient.saveStudent(student).let {  success ->
                             if(success) Log.e("Saved Student Account", "SUCCESS!")
                             else Log.e("Saved Student Account", "FAIL!")

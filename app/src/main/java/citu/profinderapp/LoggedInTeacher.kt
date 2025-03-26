@@ -7,9 +7,9 @@ class LoggedInTeacher: LoggedInAccount() {
         var background: String? = null
         var department: String? = null
 
-        fun setTeacherDetails(background: String, course: String) {
+        fun setTeacherDetails(background: String, department: String) {
             Companion.background = background
-            Companion.department = course
+            Companion.department = department
         }
     }
 }
