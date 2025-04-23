@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/main_bg">
 
     <TextView
-        android:id="@+id/brose_lbl"
+        android:id="@+id/browse_lbl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -17,7 +18,7 @@
         android:fontFamily="@font/inter"
         android:text="@string/browse_instructors"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,29 +27,23 @@
         app:layout_constraintWidth_max="500dp"
         app:layout_constraintWidth_min="300dp" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="55dp"
         android:layout_marginTop="100dp"
         android:paddingTop="20dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <ImageView
-        android:id="@+id/red_rectangle_bg"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:src="@drawable/red_rectangle"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/red_rectangle_bg" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

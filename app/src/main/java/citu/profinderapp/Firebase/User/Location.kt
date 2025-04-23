@@ -1,13 +1,16 @@
 package citu.profinderapp.Firebase.User
 
 import android.util.Log
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 data class Location(
-    val location:String,
-    val time:String
-)
+    val location: String? = null,
+    val time: Timestamp? = null
+) {
+    constructor() : this(null, null)
+}
 
 fun addLocation(location: Location) {
     val db = FirebaseFirestore.getInstance()

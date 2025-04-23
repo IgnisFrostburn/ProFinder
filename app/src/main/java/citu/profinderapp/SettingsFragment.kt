@@ -4,15 +4,15 @@ import BottomSheetFragment
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import kotlin.math.log
+import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.Accounts.LoggedInStudent
+import citu.profinderapp.Accounts.LoggedInTeacher
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +49,8 @@ class SettingsFragment : Fragment() {
 
         val logoutBtn = view.findViewById<Button>(R.id.logout_btn)
         val devBtn = view.findViewById<Button>(R.id.developer_btn)
+        val vicMapBtn = view.findViewById<Button>(R.id.vicinity_map_btn)
+        val buildLocBtn = view.findViewById<Button>(R.id.building_locator_btn)
 
         val dialog = Dialog(requireContext())
 
@@ -61,6 +63,8 @@ class SettingsFragment : Fragment() {
             val cancelBtn = dialog.findViewById<Button>(R.id.cancel_btn)
 
             dialogLogOutBtn.setOnClickListener {
+                if(LoggedInAccount.isStudent) clearLoggedInStudent()
+                else clearLoggedInTeacher()
                 val intent = Intent(requireContext(), LoginPageActivity::class.java)
                 startActivity(intent)
             }
@@ -73,6 +77,51 @@ class SettingsFragment : Fragment() {
         devBtn.setOnClickListener {
             BottomSheetFragment().show(parentFragmentManager, BottomSheetFragment().tag)
         }
+
+        vicMapBtn.setOnClickListener {
+            dialog.setContentView(R.layout.dialog_vicinity_map)
+            dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_dialog_box))
+            dialog.show()
+
+            val vicMap = dialog.findViewById<com.github.chrisbanes.photoview.PhotoView>(R.id.vicinity_map)
+            vicMap.setZoomable(true)
+            vicMap.maximumScale = 10f
+            vicMap.setScale(1.0f, true)
+        }
+
+        buildLocBtn.setOnClickListener {
+            dialog.setContentView(R.layout.dialog_building_locator)
+            dialog.window?.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.custom_dialog_box))
+            dialog.show()
+
+            val buildLoc = dialog.findViewById<com.github.chrisbanes.photoview.PhotoView>(R.id.building_locator)
+            buildLoc.setZoomable(true)
+            buildLoc.maximumScale = 10f
+            buildLoc.setScale(1.0f, true)
+        }
+    }
+
+    private fun clearLoggedInAccount() {
+        LoggedInAccount.id = ""
+        LoggedInAccount.username = null
+        LoggedInAccount.email = null
+        LoggedInAccount.password = null
+        LoggedInAccount.isStudent = false
+        LoggedInAccount.profileImg = ""
+    }
+
+    private fun clearLoggedInStudent() {
+        clearLoggedInAccount()
+        LoggedInStudent.course = null
+        LoggedInStudent.phoneNumber = null
+        LoggedInStudent.customInfo = null
+    }
+
+    private fun clearLoggedInTeacher() {
+        clearLoggedInAccount()
+        LoggedInTeacher.background = null
+        LoggedInTeacher.department = null
+        LoggedInTeacher.latestLocation = null
     }
 
     companion object {

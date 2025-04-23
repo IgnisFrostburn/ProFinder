@@ -5,32 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/main_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="ExtraText">
-
-        <ImageView
-            android:id="@+id/grid_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/bottom_background_vector"
-            android:scaleType="fitXY"
-            android:src="@drawable/grid_bg" />
-
-        <ImageView
-            android:id="@+id/red_rectangle_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/bottom_background_vector"
-            android:scaleType="fitXY"
-            android:src="@drawable/vector_bottom"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/confirm_password_tf"
-            tools:layout_editor_absoluteX="0dp" />
 
 
         <ImageView
@@ -53,7 +34,7 @@
             android:textSize="30sp"
             android:fontFamily="@font/inter"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/profinder_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -66,7 +47,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:fontFamily="@font/inter"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/create_acc_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -81,7 +62,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/inter"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             android:layout_marginStart="50dp"
@@ -98,19 +79,20 @@
             android:layout_marginEnd="50dp"
             android:background="@drawable/rounded_border"
             android:hint="@string/username_hint"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:paddingStart="20dp"
             android:paddingBottom="2dp"
             android:paddingEnd="20dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/username_lbl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="text"
-            android:autofillHints="username"/>
+            android:autofillHints="username"
+            android:textColorHint="@color/light_grey"/>
 
         <TextView
             android:id="@+id/email_lbl"
@@ -126,7 +108,7 @@
             app:layout_constraintWidth_max="500dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/username_tf"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -139,19 +121,20 @@
             android:paddingBottom="2dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/rounded_border"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:hint="@string/email_hint"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/email_lbl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="textEmailAddress"
-            android:autofillHints="emailAddress" />
+            android:autofillHints="emailAddress"
+            android:textColorHint="@color/light_grey"/>
 
         <TextView
             android:id="@+id/password_lbl"
@@ -167,7 +150,7 @@
             app:layout_constraintWidth_max="500dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/email_tf"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -179,21 +162,22 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/rounded_border"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:hint="@string/password_hint"
             android:paddingBottom="2dp"
             android:fontFamily="@font/inter"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/password_lbl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="textPassword"
-            android:autofillHints="password" />
+            android:autofillHints="password"
+            android:textColorHint="@color/light_grey"/>
 
         <TextView
             android:id="@+id/confirm_password_lbl"
@@ -209,7 +193,7 @@
             app:layout_constraintWidth_max="500dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/password_tf"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -222,20 +206,40 @@
             android:layout_marginEnd="50dp"
             android:fontFamily="@font/inter"
             android:background="@drawable/rounded_border"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:hint="@string/password_hint"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="2dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/confirm_password_lbl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="textPassword"
-            android:autofillHints="password" />
+            android:autofillHints="password"
+            android:textColorHint="@color/light_grey"/>
+
+        <Button
+            android:id="@+id/upload_img_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:text="@string/upload_image"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_button"
+            android:fontFamily="@font/inter_font"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/confirm_password_tf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
         <Button
             android:id="@+id/back_btn"
@@ -243,14 +247,16 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded_corner_box"
+            android:textColor="@color/base_green"
+            android:background="@drawable/selector_transparent_button"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:paddingStart="20dp"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/upload_img_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/continue_btn"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -261,15 +267,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-
-            android:background="@drawable/rounded_corner_box"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_transparent_button"
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
             android:text="@string/next_continue"
-            android:textColor="@color/white"
+            android:textColor="@color/base_green"
             android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/upload_img_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back_btn"/>

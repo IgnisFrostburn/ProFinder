@@ -21,26 +21,24 @@ class TeacherFragment : Fragment() {
     private lateinit var teacherList: MutableList<TeacherUser>
     private lateinit var recyclerView: RecyclerView
     private lateinit var firestoreClient: FirestoreClient
+    private var _binding: FragmentBrowseBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("TeacherFragment", "Fragment Created!") // Add this line
+        Log.e("TeacherFragment", "Fragment Created!")
     }
 
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentBrowseBinding.inflate(inflater, container, false)
-//        return binding.root
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         Log.e("TeacherFragment", "onCreateView called")
-        val binding = FragmentBrowseBinding.inflate(inflater, container, false)
+        _binding = FragmentBrowseBinding.inflate(inflater, container, false)
         firestoreClient = FirestoreClient()
 
         recyclerView = binding.recyclerView
@@ -54,11 +52,15 @@ class TeacherFragment : Fragment() {
 //            TeacherUser("bcxbv", "bvbvcb", "dsadasd", "fafasdasd", "teacher", "adfasfas", "dhadhasds"),
 //        )
 
-        teacherAdapter = TeacherAdapter(teacherList)
+        teacherAdapter = TeacherAdapter(requireContext(), teacherList)
 
         Log.e("item count", teacherAdapter.itemCount.toString())
 
         recyclerView.adapter = teacherAdapter
+
+        binding.swipeRefresh.setOnRefreshListener {
+            fetchTeachers()
+        }
 
         fetchTeachers()
 
@@ -67,35 +69,25 @@ class TeacherFragment : Fragment() {
         return binding.root
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        recyclerView = binding.recyclerView
-//        recyclerView.setLayoutManager(LinearLayoutManager(context))
-//        if (teacherList == null || teacherList.isEmpty()) {
-//            Log.e("RecyclerViewDebug", "Dataset is empty, RecyclerView won't render items!")
-//        } else {
-//            Log.e("RecyclerViewDebug", "Dataset size: " + teacherList.size)
-//        }
-//        val adapter = TeacherAdapter(teacherList)
-//        recyclerView.setAdapter(adapter)
-//        Log.e("RecyclerViewDebug", "Adapter has been set.")
-//    }
-
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchTeachers() {
+        binding.swipeRefresh.isRefreshing = true
         firestoreClient.fetchTeachers { teachers ->
             teacherList.clear()
             teacherList.addAll(teachers)
             teacherAdapter.notifyDataSetChanged()
-            Log.e("TeacherFragment", "Fetched teachers: ${teacherList.size} teachers found.")
-            teacherList.forEach { teacher ->
-                Log.e("TeacherFragment", teacher.username)
-            }
+            Log.e("TeacherFragment", "Fetched ${teacherList.size} teachers.")
+            binding.swipeRefresh.isRefreshing = false
         }
     }
 
     override fun onResume() {
         super.onResume()
         Log.e("TeacherFragment", "Fragment is visible")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

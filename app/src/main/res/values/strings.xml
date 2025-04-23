@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MobDev</string>
+    <string name="app_name">ProFinder</string>
     <string name="user_name">USERNAME</string>
     <string name="password">PASSWORD</string>
     <string name="email">EMAIL</string>
@@ -64,4 +64,19 @@
     <string name="confirm_logout">CONFIRM LOGOUT</string>
     <string name="logout_confirmation_prompt">Are you sure you want to logout?</string>
     <string name="cancel">Cancel</string>
+    <string name="cancel_caps">CANCEL</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="back_btn">back button</string>
+    <string name="bio">BIO\n</string>
+    <string name="location">Location</string>
+    <string name="hobbies_title">Hobbies:</string>
+    <string name="hobbies">Playing video games\nWatchinganime\nReading manga\\light novels\nCosplaying</string>
+    <string name="socials">Socials:</string>
+    <string name="instagram_icon">instagram_icon</string>
+    <string name="facebook_icon">facebook_icon</string>
+    <string name="youtube_icon">youtube_icon</string>
+    <string name="vicinity_map">Vicinity Map</string>
+    <string name="building_locator">Building Locator</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="have_a_cool_and_normal_day">Have a cool and normal day!</string>
 </resources>

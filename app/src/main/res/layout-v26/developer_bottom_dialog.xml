@@ -4,13 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_top"
+    android:backgroundTint="@color/main_bg">
 
     <TextView
         android:id="@+id/bs_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="@string/application_made_by"
         android:textSize="16sp"
         android:layout_marginTop="15dp"
@@ -22,13 +24,22 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal">
-        <ImageView
+
+        <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/developer_profile"
-            android:scaleType="centerCrop"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp" />
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/developer_profile"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/programmer"
             android:layout_width="wrap_content"
@@ -39,7 +50,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:gravity="center"/>
     </LinearLayout>
@@ -48,7 +59,7 @@
         android:id="@+id/program"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="@string/bachelor_of_science_in_computer_science"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
@@ -58,11 +69,83 @@
         android:id="@+id/university"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="@string/cebu_institute_of_technology_university"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
         android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/hobbies_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/hobbies_title"
+        android:textAlignment="textStart"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/hobbies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/hobbies"
+        android:textAlignment="textStart"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/socials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/socials"
+        android:textAlignment="textStart"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/instagram_icon"
+                android:contentDescription="@string/instagram_icon" />
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/facebook_icon"
+                android:contentDescription="@string/facebook_icon" />
+
+            <ImageView
+                android:id="@+id/youtube"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/youtube_icon"
+                android:contentDescription="@string/youtube_icon" />
+
+        </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -72,7 +155,7 @@
             android:id="@+id/bs_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:src="@drawable/yellow_rectangle"
+            android:background="@color/base_green"
             android:scaleType="center"
             tools:ignore="MissingConstraints" />
 
@@ -81,7 +164,7 @@
             android:layout_height="wrap_content"
             android:text="@string/close"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"

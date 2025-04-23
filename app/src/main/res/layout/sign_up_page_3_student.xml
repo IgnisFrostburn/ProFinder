@@ -3,33 +3,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/main_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:ignore="ExtraText">
-
-        <ImageView
-            android:id="@+id/grid_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/bottom_background_vector"
-            android:scaleType="fitXY"
-            android:src="@drawable/grid_bg" />
-
-        <ImageView
-            android:id="@+id/red_rectangle_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/bottom_background_vector"
-            android:scaleType="fitXY"
-            android:src="@drawable/vector_bottom"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/custom_info_tf"
-            tools:layout_editor_absoluteX="0dp" />
 
 
         <ImageView
@@ -52,7 +33,7 @@
             android:textSize="30sp"
             android:fontFamily="@font/inter"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/profinder_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -65,7 +46,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:fontFamily="@font/inter"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/create_acc_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -84,7 +65,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/part_three_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -96,11 +77,11 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/rounded_border"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/course_year_lbl"
@@ -108,7 +89,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="text"
             android:importantForAutofill="no"
-            android:hint="@string/course_hint"/>
+            android:hint="@string/course_hint"
+            android:textColorHint="@color/light_grey"/>
 
         <TextView
             android:id="@+id/phone_number_lbl"
@@ -124,7 +106,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/course_year_tf"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -137,10 +119,10 @@
             android:layout_marginEnd="50dp"
             android:background="@drawable/rounded_border"
             android:paddingStart="20dp"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:paddingEnd="20dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
             app:layout_constraintTop_toBottomOf="@id/phone_number_lbl"
@@ -148,7 +130,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:inputType="phone"
             android:autofillHints="phone"
-            android:hint="@string/phone_number_hint"/>
+            android:hint="@string/phone_number_hint"
+            android:textColorHint="@color/light_grey"/>
 
         <TextView
             android:id="@+id/custom_info_tv"
@@ -164,7 +147,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/phone_number_tf"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -178,12 +161,12 @@
             android:background="@drawable/rounded_border"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:backgroundTint="@color/light_grey"
+            android:backgroundTint="@color/et_bg"
             android:paddingTop="5dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
-            android:minLines="1"
-            android:maxLength="105"
+            android:textColor="@color/white"
+            android:minLines="5"
+            android:maxLength="500"
             android:gravity="top|start"
             app:layout_constraintWidth_min="300dp"
             app:layout_constraintWidth_max="500dp"
@@ -193,7 +176,8 @@
             android:inputType="textMultiLine"
             tools:ignore="LabelFor"
             android:importantForAutofill="no"
-            android:hint="@string/enter_text_hint"/>
+            android:hint="@string/enter_text_hint"
+            android:textColorHint="@color/light_grey"/>
 
         <Button
             android:id="@+id/back_btn"
@@ -201,8 +185,8 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:textSize="25sp"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded_corner_box"
+            android:textColor="@color/base_green"
+            android:background="@drawable/selector_transparent_button"
             android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:paddingStart="20dp"
@@ -219,8 +203,8 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
             android:textSize="25sp"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded_corner_box"
+            android:textColor="@color/base_green"
+            android:background="@drawable/selector_transparent_button"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:paddingStart="20dp"

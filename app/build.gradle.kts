@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -54,4 +55,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
 //    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     implementation("com.google.android.gms:play-services-auth:20.0.1")
+    implementation ("com.cloudinary:cloudinary-android:2.3.1")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+    implementation ("com.github.chrisbanes:PhotoView:2.3.0")
 }

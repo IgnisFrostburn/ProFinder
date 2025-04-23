@@ -1,7 +1,9 @@
 package citu.profinderapp.Firebase.User
 
 import android.util.Log
-import com.google.android.gms.tasks.Task
+import citu.profinderapp.Accounts.LoggedInTeacher
+import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.Accounts.LoggedInStudent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +29,33 @@ class FirestoreClient {
         }
     }
 
+    fun updateTeacher(teacherUser: TeacherUser, onComplete: (Boolean) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("teachers").document(teacherUser.id)
+            .set(teacherUser)
+            .addOnSuccessListener {
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreClient", "Document overwrite failed", e)
+                onComplete(false)
+            }
+    }
+
+
+    fun updateStudent(studentUser: StudentUser, onComplete: (Boolean) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("students").document(studentUser.id)
+            .set(studentUser)
+            .addOnSuccessListener {
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreClient", "Document overwrite failed", e)
+                onComplete(false)
+            }
+    }
+
     fun getStudentData(callback: (StudentUser?) -> Unit) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         val db = FirebaseFirestore.getInstance()
@@ -38,9 +67,32 @@ class FirestoreClient {
                     if (task.isSuccessful) {
                         val documentSnapshot: DocumentSnapshot? = task.result
                         val studentUser = documentSnapshot?.toObject(StudentUser::class.java)
+
+                        studentUser?.let {
+                            LoggedInAccount.setID(it.id)
+
+                            LoggedInAccount.setValues(
+                                username = it.username,
+                                email = it.email,
+                                password = it.password,
+                                isStudent = true,
+                                profileImg = it.profileImg
+                            )
+
+                            LoggedInStudent.setStudentDetails(
+                                course = it.course,
+                                phoneNumber =  it.phoneNumber,
+                                personalInfo = it.personalInfo
+                            )
+                        }
+
                         callback(studentUser)
+                    } else {
+                        callback(null)
                     }
                 }
+        } else {
+            callback(null)
         }
     }
 
@@ -55,28 +107,33 @@ class FirestoreClient {
                     if (task.isSuccessful) {
                         val documentSnapshot: DocumentSnapshot? = task.result
                         val teacherUser = documentSnapshot?.toObject(TeacherUser::class.java)
+
+                        teacherUser?.let {
+                            LoggedInAccount.setID(it.id)
+
+                            LoggedInAccount.setValues(
+                                username = it.username,
+                                email = it.email,
+                                password = it.password,
+                                isStudent = false,
+                                profileImg = it.profileImg
+                            )
+
+                            LoggedInTeacher.setTeacherDetails(
+                                background = it.background,
+                                department = it.courses
+                            )
+                        }
+
                         callback(teacherUser)
+                    } else {
+                        callback(null)
                     }
                 }
+        } else {
+            callback(null)
         }
     }
-
-//    fun fetchTeachers(callback: (List<TeacherUser>) -> Unit) {
-//        val teachersList = mutableListOf<TeacherUser>()
-//
-//        db.collection("teachers")
-//            .get()
-//            .addOnSuccessListener { documents ->
-//                for (document in documents) {
-//                    val teacher = document.toObject(TeacherUser::class.java)
-//                    teachersList.add(teacher)
-//                }
-//                callback(teachersList)
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.e("FirestoreClient", "Error getting documents: ", exception)
-//            }
-//    }
 
     fun fetchTeachers(callback: (List<TeacherUser>) -> Unit) {
         val teachersList = mutableListOf<TeacherUser>()
@@ -88,57 +145,12 @@ class FirestoreClient {
                     val teacher = document.toObject(TeacherUser::class.java)
                     teachersList.add(teacher)
                 }
-                // Once data is fetched, call the callback
                 callback(teachersList)
             }
             .addOnFailureListener { exception ->
                 Log.e("FirestoreClient", "Error getting documents: ", exception)
             }
     }
-
-//    fun fetchTeachers(teacherList : MutableList<TeacherUser>) : MutableList<TeacherUser> {
-//        db.collection("teachers")
-//            .get()
-//            .addOnSuccessListener { documents ->
-//                teacherList.clear()
-//                for(document in documents) {
-//                    val teacherUser = document.toObject(TeacherUser::class.java)
-//                    teacherList.add(teacherUser)
-//                }
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.e("Fetch Teachers", "Error getting documents: ", exception)
-//            }
-//        return teacherList
-//    }
-
-//    fun insertUser(
-//        user:User
-//    ) : Flow<String?> {
-//        return callbackFlow {
-//            db.collection(collection)
-//                .add(user)
-//        }
-//    }
-//
-//    private fun User.ToHashMap(): HashMap<String, Any> {
-//        return hashMapOf(
-//            "username" to username,
-//            "password" to password,
-//            "email" to email,
-//            "accountType" to accountType
-//        )
-//    }
-//
-//    private fun Map<String, Any>.toUser(): User {
-//        return User(
-//            id = this["id"] as String,
-//            username = this["username"] as String,
-//            password = this["password"] as String,
-//            email = this["email"] as String,
-//            accountType = this["accountType"] as String
-//        )
-//    }
 }
 
 

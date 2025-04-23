@@ -1,6 +1,7 @@
 package citu.profinderapp.Firebase.User
 
-import citu.profinderapp.R
+import android.net.Uri
+import java.io.Serializable
 
 open class User(
     open val id:String = "",
@@ -8,5 +9,5 @@ open class User(
     open val password:String = "",
     open val email:String = "",
     open val accountType:String = "",
-//    open var profilePic: Int = R.drawable.profile_placeholder_icon
-)
+    open val profileImg:String = ""
+): Serializable

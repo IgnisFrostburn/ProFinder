@@ -1,6 +1,7 @@
 package citu.profinderapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -30,9 +31,13 @@ class LandingPageActivity : AppCompatActivity() {
                 2 -> tab.setIcon(R.drawable.settings_icon)
             }
         }.attach()
+
+        val targetPage = intent.getIntExtra("navigate_to_page", 0)
+        navigateToPage(targetPage)
     }
 
-    fun navigateToPage(position: Int) {
+    private fun navigateToPage(position: Int) {
+        Log.d("Navigate", position.toString())
         viewPager.currentItem = position
     }
 }

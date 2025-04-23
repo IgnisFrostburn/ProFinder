@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:ignore="SelectedPhotoAccess" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,46 +19,63 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobDev"
+        tools:ignore="LockedOrientationActivity"
         tools:targetApi="31">
         <activity
+            android:name=".TeacherProfileActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".ChangeStudentBioActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".UpdateLocationActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ChangeTeacherBioActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".LocationHistoryActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".TeacherBioActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".DeveloperActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".LandingPageActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".SignUpPage3TeacherActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpPage3StudentActivity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpPage2Activity"
+            android:screenOrientation="portrait"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpPage1Activity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".LoginPageActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

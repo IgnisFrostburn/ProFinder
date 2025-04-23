@@ -2,8 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="cit_yellow">#f4c522</color>
+    <color name="base_green">#2CD364</color>
+    <color name="pressed_green">#26b556</color>
+    <color name="main_bg">#282b37</color>
+    <color name="et_bg">#52536b</color>
+    <color name="accent_bg">#2d2e3b</color>
+    <color name="light_bg">#44475b</color>
+<!--    <color name="base_orange">#FF8220</color>-->
+<!--    <color name="base_green">#2FFF00</color>-->
+<!--    <color name="cit_yellow">#f4c522</color>-->
     <color name="cit_red">#8b242c</color>
+    <color name="red">#ff0000</color>
     <color name="transparent">#00000000</color>
     <color name="light_grey">#d2d2d2</color>
 </resources>
