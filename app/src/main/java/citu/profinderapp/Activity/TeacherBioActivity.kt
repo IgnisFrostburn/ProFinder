@@ -1,6 +1,7 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +11,9 @@ import citu.profinderapp.Accounts.LoggedInTeacher
 import citu.profinderapp.Firebase.Location.changeDateFormat
 import com.bumptech.glide.Glide
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.R
+import java.util.Calendar
+import java.util.Date
 
 class TeacherBioActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +26,19 @@ class TeacherBioActivity : Activity() {
         findViewById<TextView>(R.id.email_lbl).text = LoggedInAccount.email
         findViewById<TextView>(R.id.background_lbl).text = LoggedInTeacher.background
         findViewById<TextView>(R.id.courses_lbl).text = LoggedInTeacher.department
-        findViewById<TextView>(R.id.current_location_lbl).text = LoggedInTeacher.latestLocation!!.location
-        findViewById<TextView>(R.id.time_lbl).text = changeDateFormat(LoggedInTeacher.latestLocation!!.time)
+        findViewById<TextView>(R.id.current_location_lbl).text = if((LoggedInTeacher.latestLocation?.location
+                ?: String) == ""
+        ) {
+            "N/A"
+        } else {
+            LoggedInTeacher.latestLocation?.location
+        }
+        findViewById<TextView>(R.id.time_lbl).text = if (LoggedInTeacher.latestLocation?.time == Date(0)) {
+            changeDateFormat(Calendar.getInstance().time)
+        } else {
+            changeDateFormat(LoggedInTeacher.latestLocation?.time ?: Calendar.getInstance().time)
+        }
+
         Glide.with(applicationContext)
             .load(LoggedInAccount.profileImg)
             .circleCrop()
@@ -37,7 +52,11 @@ class TeacherBioActivity : Activity() {
         backBtn.setOnClickListener {
             val intent = Intent(this, LandingPageActivity::class.java)
             intent.putExtra("navigate_to_page", 1)
-            startActivity(intent)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.slide_out_left
+            )
+            startActivity(intent, animation.toBundle())
         }
     }
 
@@ -56,7 +75,7 @@ class TeacherBioActivity : Activity() {
             findViewById<TextView>(R.id.current_location_lbl).text = location.location
             findViewById<TextView>(R.id.time_lbl).text = changeDateFormat(location.time)
         } ?: run {
-            findViewById<TextView>(R.id.current_location_lbl).text = "No location"
+            findViewById<TextView>(R.id.current_location_lbl).text = "N/A"
             findViewById<TextView>(R.id.time_lbl).text = "N/A"
         }
 

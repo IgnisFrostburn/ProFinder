@@ -1,10 +1,15 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import citu.profinderapp.BrowseFragment
+import citu.profinderapp.ProfileFragment
+import citu.profinderapp.R
+import citu.profinderapp.SettingsFragment
+import citu.profinderapp.Adapter.ViewPageAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

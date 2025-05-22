@@ -16,6 +16,10 @@ import citu.profinderapp.Accounts.LoggedInTeacher
 import citu.profinderapp.Firebase.Location.changeDateFormat
 import com.bumptech.glide.Glide
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.Activity.ChangeStudentBioActivity
+import citu.profinderapp.Activity.ChangeTeacherBioActivity
+import citu.profinderapp.Activity.TeacherBioActivity
+import citu.profinderapp.Activity.UpdateLocationActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,7 +74,7 @@ class ProfileFragment : Fragment() {
             val time = view.findViewById<TextView>(R.id.time_lbl)
 
 
-            currentLocation.text = LoggedInTeacher.latestLocation?.location ?: "No location"
+            currentLocation.text = LoggedInTeacher.latestLocation?.location ?: "N/A"
             time.text = LoggedInTeacher.latestLocation?.time?.let { changeDateFormat(it) } ?: "N/A"
             Glide.with(this)
                 .load(profileURL)
@@ -145,7 +149,7 @@ class ProfileFragment : Fragment() {
             view?.findViewById<TextView>(R.id.current_location_lbl)!!.text = location.location
             view?.findViewById<TextView>(R.id.time_lbl)!!.text = changeDateFormat(location.time)
         } ?: run {
-            view?.findViewById<TextView>(R.id.current_location_lbl)!!.text = "No location"
+            view?.findViewById<TextView>(R.id.current_location_lbl)!!.text = "N/A"
             view?.findViewById<TextView>(R.id.time_lbl)!!.text = "N/A"
         }
     }

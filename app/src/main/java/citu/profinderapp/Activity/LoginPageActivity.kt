@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -14,6 +14,7 @@ import citu.profinderapp.Accounts.LoggedInTeacher
 import citu.profinderapp.Firebase.Location.getLatestLocation
 import citu.profinderapp.Firebase.User.FirestoreClient
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -39,7 +40,10 @@ class LoginPageActivity : Activity() {
 
         signUpBtn.setOnClickListener {
             val registerIntent = Intent(this, SignUpPage1Activity::class.java)
-            val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.fade_out_fast
+            )
             startActivity(registerIntent, animation.toBundle())
         }
 
@@ -107,7 +111,10 @@ class LoginPageActivity : Activity() {
         Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
         loadingScreen.visibility = View.GONE
         val intent = Intent(this, LandingPageActivity::class.java)
-        val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+        val animation = ActivityOptions.makeCustomAnimation(this,
+            R.anim.fade_in_fast,
+            R.anim.fade_out_fast
+        )
         startActivity(intent, animation.toBundle())
     }
 

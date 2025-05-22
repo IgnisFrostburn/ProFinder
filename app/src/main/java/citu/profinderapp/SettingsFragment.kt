@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import citu.profinderapp.Accounts.LoggedInAccount
 import citu.profinderapp.Accounts.LoggedInStudent
 import citu.profinderapp.Accounts.LoggedInTeacher
+import citu.profinderapp.Activity.LoginPageActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

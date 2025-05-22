@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -9,50 +9,53 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import citu.profinderapp.Accounts.LoggedInStudent
+import citu.profinderapp.Accounts.LoggedInTeacher
 import citu.profinderapp.Firebase.User.FirestoreClient
-import citu.profinderapp.Firebase.User.StudentUser
+import citu.profinderapp.Firebase.User.TeacherUser
 import com.cloudinary.Cloudinary
 import com.cloudinary.utils.ObjectUtils
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.Accounts.LoggedInStudent
+import citu.profinderapp.R
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import java.io.File
 
-class SignUpPage3StudentActivity : Activity() {
-
+class SignUpPage3TeacherActivity : Activity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestoreClient: FirestoreClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sign_up_page_3_student)
+        setContentView(R.layout.sign_up_page_3_teacher)
+
         val signUpBtn = findViewById<Button>(R.id.sign_up_btn)
         val backBtn = findViewById<Button>(R.id.back_btn)
-        var courseAndYear:String
-        var phoneNumber:String
-        var customInfo:String
+        var background:String
+        var course:String
         auth = Firebase.auth
         firestoreClient = FirestoreClient()
-
 
         backBtn.setOnClickListener {
             Log.e("Back button is clicked", "SUCCESS!")
             val backIntent = Intent(this, SignUpPage2Activity::class.java)
-            val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.fade_out_fast
+            )
             startActivity(backIntent, animation.toBundle());
         }
 
         signUpBtn.setOnClickListener {
-            courseAndYear = findViewById<EditText>(R.id.course_year_tf).text.toString()
-            phoneNumber = findViewById<EditText>(R.id.phone_number_tf).text.toString()
-            customInfo = findViewById<EditText>(R.id.custom_info_tf).text.toString()
             Log.e("Sign up button is clicked", "SUCCESS!")
-            LoggedInStudent.setStudentDetails(courseAndYear, phoneNumber, customInfo)
+            background = findViewById<EditText>(R.id.background_tf).text.toString()
+            course = findViewById<EditText>(R.id.courses_tf).text.toString()
+            LoggedInTeacher.setTeacherDetails(background, course)
 
             val email = LoggedInAccount.email ?: ""
             val password = LoggedInAccount.password ?: ""
+
 
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -74,41 +77,43 @@ class SignUpPage3StudentActivity : Activity() {
                             val result = cloudinary.uploader().upload(
                                 imageFile,
                                 ObjectUtils.asMap(
-                                    "public_id", "students/${user?.uid}",
+                                    "public_id", "teachers/${user?.uid}",
                                     "overwrite", true,
-                                    "folder", "students"
+                                    "folder", "teachers"
                                 )
                             )
 
                             val imageUrl = result["secure_url"] as String
                             Log.d("Cloudinary", "Uploaded URL: $imageUrl")
 
-                        val student = StudentUser(
-                            user?.uid?:"",
-                            LoggedInAccount.username?:"",
-                            password,
-                            email,
-                            "student",
-                            LoggedInAccount.profileImg,
-                            courseAndYear,
-                            phoneNumber,
-                            customInfo
-                        )
+                            val teacher = TeacherUser(
+                                user?.uid ?: "",
+                                LoggedInAccount.username ?: "",
+                                password,
+                                email,
+                                "teacher",
+                                imageUrl,
+                                background,
+                                course
+                            )
 
                             runOnUiThread {
-                                firestoreClient.saveStudent(student).let { success ->
+                                firestoreClient.saveTeacher(teacher).let { success ->
                                     if (success) {
                                         Toast.makeText(this, "Registration Complete!", Toast.LENGTH_SHORT).show()
-                                        Log.e("Saved Student", "SUCCESS!")
+                                        Log.e("Saved Teacher", "SUCCESS!")
                                     }
                                     else {
                                         Toast.makeText(this, "Your registration failed!", Toast.LENGTH_SHORT).show()
-                                        Log.e("Saved Student", "FAIL!")
+                                        Log.e("Saved Teacher", "FAIL!")
                                     }
                                 }
-
-                                val signUpIntent = Intent(this, LandingPageActivity::class.java)
-                                val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+                                clearLoggedInTeacher()
+                                val signUpIntent = Intent(this, LoginPageActivity::class.java)
+                                val animation = ActivityOptions.makeCustomAnimation(this,
+                                    R.anim.fade_in_fast,
+                                    R.anim.fade_out_fast
+                                )
                                 startActivity(signUpIntent, animation.toBundle())
                             }
 
@@ -124,37 +129,6 @@ class SignUpPage3StudentActivity : Activity() {
                     Log.e("Sign Up Email and Password", "FAIL!")
                 }
             }
-
-
-//            auth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        Log.e("Sign Up Email and Password", "SUCCESS!")
-//                        val user = auth.currentUser
-//                        val student = StudentUser(
-//                            user?.uid?:"",
-//                            LoggedInAccount.username?:"",
-//                            password,
-//                            email,
-//                            "student",
-//                            LoggedInAccount.profileImg,
-//                            courseAndYear,
-//                            phoneNumber,
-//                            customInfo
-//                        )
-//                        firestoreClient.saveStudent(student).let {  success ->
-//                            if(success) Log.e("Saved Student Account", "SUCCESS!")
-//                            else Log.e("Saved Student Account", "FAIL!")
-//                        }
-//
-//                        val signUpIntent = Intent(this, LandingPageActivity::class.java)
-//                        val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
-//                        startActivity(signUpIntent, animation.toBundle());
-//
-//                    } else {
-//                        Log.e("Sign Up Email and Password", "FAIL!")
-//                    }
-//                }
         }
     }
 
@@ -168,4 +142,21 @@ class SignUpPage3StudentActivity : Activity() {
         }
         return tempFile
     }
+
+    private fun clearLoggedInAccount() {
+        LoggedInAccount.id = ""
+        LoggedInAccount.username = null
+        LoggedInAccount.email = null
+        LoggedInAccount.password = null
+        LoggedInAccount.isStudent = false
+        LoggedInAccount.profileImg = ""
+    }
+
+    private fun clearLoggedInTeacher() {
+        clearLoggedInAccount()
+        LoggedInTeacher.background = null
+        LoggedInTeacher.department = null
+        LoggedInTeacher.latestLocation = null
+    }
+
 }

@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
 import android.content.Intent
@@ -14,6 +14,7 @@ import citu.profinderapp.Firebase.User.TeacherUser
 import com.cloudinary.Cloudinary
 import com.cloudinary.utils.ObjectUtils
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.R
 import java.io.File
 
 class ChangeTeacherBioActivity : Activity() {

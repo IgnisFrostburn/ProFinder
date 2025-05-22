@@ -1,6 +1,7 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,8 @@ import citu.profinderapp.Firebase.User.Location
 import citu.profinderapp.Firebase.User.SelectedTeacher
 import citu.profinderapp.Firebase.User.TeacherUser
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.Adapter.AdapterLocation
+import citu.profinderapp.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -42,7 +45,11 @@ class LocationHistoryActivity : Activity() {
                 intent =Intent(this, TeacherProfileActivity::class.java)
                 intent.putExtra("teacher", teacher)
             } else intent = Intent(this, TeacherBioActivity::class.java)
-            startActivity(intent)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.slide_out_left
+            )
+            startActivity(intent, animation.toBundle())
         }
     }
 

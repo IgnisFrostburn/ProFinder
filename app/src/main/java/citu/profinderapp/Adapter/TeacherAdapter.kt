@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import citu.profinderapp.Firebase.User.SelectedTeacher
 import citu.profinderapp.Firebase.User.TeacherUser
+import citu.profinderapp.R
+import citu.profinderapp.Activity.TeacherProfileActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -51,7 +53,7 @@ class TeacherAdapter(
                 if (snapshot != null && !snapshot.isEmpty) {
                     val doc = snapshot.documents[0]
                     val latestLocation = doc.toObject(citu.profinderapp.Firebase.Location.Location::class.java)
-                    holder.teacherLocation.text = latestLocation?.location ?: "Departed"
+                    holder.teacherLocation.text = latestLocation?.location ?: "N/A"
 
                     Glide.with(holder.itemView.context)
                         .load(teacher.profileImg)
@@ -59,7 +61,7 @@ class TeacherAdapter(
                         .placeholder(R.drawable.profile_placeholder_icon)
                         .into(holder.teacherImage)
                 } else {
-                    holder.teacherLocation.text = "Departed"
+                    holder.teacherLocation.text = "N/A"
                 }
             }
 
@@ -80,6 +82,12 @@ class TeacherAdapter(
 
     override fun getItemCount(): Int {
         return teacherList.size
+    }
+
+    fun updateList(newList: List<TeacherUser>) {
+        teacherList.clear()
+        teacherList.addAll(newList)
+        notifyDataSetChanged()
     }
 }
 

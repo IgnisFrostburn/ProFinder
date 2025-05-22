@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Adapter
 
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

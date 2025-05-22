@@ -1,5 +1,6 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import citu.profinderapp.Firebase.Location.changeDateFormat
 import citu.profinderapp.Firebase.Location.getLatestLocation
 import citu.profinderapp.Firebase.User.TeacherUser
+import citu.profinderapp.R
 import com.bumptech.glide.Glide
 
 class TeacherProfileActivity : AppCompatActivity() {
@@ -33,6 +35,9 @@ class TeacherProfileActivity : AppCompatActivity() {
             if (latestLocation != null) {
                 findViewById<TextView>(R.id.current_location_lbl).text = latestLocation.location
                 findViewById<TextView>(R.id.time_lbl).text = changeDateFormat(latestLocation.time)
+            } else {
+                findViewById<TextView>(R.id.current_location_lbl).text = "N/A"
+                findViewById<TextView>(R.id.time_lbl).text = "N/A"
             }
         }
         Glide.with(applicationContext)
@@ -43,7 +48,11 @@ class TeacherProfileActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener {
             val intent = Intent(this, LandingPageActivity::class.java)
-            startActivity(intent)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.slide_out_left
+            )
+            startActivity(intent, animation.toBundle())
         }
 
         locationHistoryBtn.setOnClickListener {

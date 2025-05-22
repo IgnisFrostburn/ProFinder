@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Adapter
 
 import android.content.Context
 import android.util.Log
@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import citu.profinderapp.Firebase.Location.changeDateFormat
 import citu.profinderapp.Firebase.User.Location
-import com.google.api.Distribution.BucketOptions.Linear
+import citu.profinderapp.R
 
 class AdapterLocation(
     private val context: Context,
@@ -25,7 +25,7 @@ class AdapterLocation(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location_history, parent, false)
         Log.e("ViewHolder", "GOOD")
-        return AdapterLocation.LocationViewHolder(view)
+        return LocationViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {

@@ -1,4 +1,4 @@
-package citu.profinderapp
+package citu.profinderapp.Activity
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import citu.profinderapp.Accounts.LoggedInAccount
+import citu.profinderapp.R
 
 class SignUpPage2Activity : Activity() {
     private val chooseImgRequest = 1
@@ -38,7 +39,10 @@ class SignUpPage2Activity : Activity() {
         backBtn.setOnClickListener {
             Log.e("Back button is clicked", "SUCCESS!")
             val backIntent = Intent(this, SignUpPage1Activity::class.java)
-            val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+            val animation = ActivityOptions.makeCustomAnimation(this,
+                R.anim.fade_in_fast,
+                R.anim.fade_out_fast
+            )
             startActivity(backIntent, animation.toBundle());
         }
 
@@ -64,7 +68,10 @@ class SignUpPage2Activity : Activity() {
                 if(isStudent) LoggedInAccount.setValues(username, email, password, true, imageUri.toString())
                 else LoggedInAccount.setValues(username, email, password, false, imageUri.toString())
 
-                val animation = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in_fast, R.anim.fade_out_fast)
+                val animation = ActivityOptions.makeCustomAnimation(this,
+                    R.anim.fade_in_fast,
+                    R.anim.fade_out_fast
+                )
                 startActivity(continueIntent, animation.toBundle());
             }
         }
